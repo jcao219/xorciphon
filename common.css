@@ -1,0 +1,28 @@
+.quitebig {
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
+#leftward {
+    width:30%; float:left;
+}
+
+#rightward {
+    float:right; width:65%;
+}
+
+#rightward :after {
+    clear: both;
+}
+
+.vertfill {
+    height: 90%;
+}
+
+.top_container {
+    width: 50%;
+    margin: 0 auto;
+}
