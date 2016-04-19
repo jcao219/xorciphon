@@ -20,20 +20,13 @@ function updateResults() {
         if(/^[\x20-\x7E]+$/.test(curr_thing)) {
             if(/^[A-Za-z ]+$/.test(curr_thing)) {
                 $("#frequent_sequences").append(
-                    '<strong><p class="tooltip">X</p><p onmouseover="highlightResult(this)" data-starti="'+ i +'" data-endi="' + (i + j) + '">' + curr_thing + "</p></strong>"); 
+                    '<strong><p data-starti="'+ i +'" data-endi="' + (i + j) + '">' + curr_thing + "</p></strong>"); 
             } else {
                 $("#frequent_sequences").append(
-                    '<div><p class="tooltip">X</p><p onmouseover="highlightResult(this)" data-starti="'+ i +'" data-endi="' + (i + j) + '">' + curr_thing + "</p></div>"); 
+                    '<div><p data-starti="'+ i +'" data-endi="' + (i + j) + '">' + curr_thing + "</p></div>"); 
             }
         }
     }
-}
-
-function highlightResult(e) {
-    var start = $(e).data("starti");
-    var end = $(e).data("endi");
-    $(e).parent().parent().find(".tooltip").hide();
-    $(e).parent().children(".tooltip").show();
 }
 
 $(function () {
