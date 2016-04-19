@@ -26,3 +26,8 @@ textarea {
     width: 50%;
     margin: 0 auto;
 }
+
+.tooltip {
+    display:none;
+    border:1px solid #F00;
+}
