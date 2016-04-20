@@ -6,7 +6,7 @@ function update() {
     var max_key_len = textlen / 2;
     
     var all_strides = {};
-    for(var l = 1; l <= max_key_len; l++) {
+    for(var l = 1; l < max_key_len; l++) {
         var strides = [];
         for(var i = 0; i + l < textlen; i += l) {
             var the_substr = text.substring(i, i + l);
@@ -18,14 +18,11 @@ function update() {
         all_strides[l] = strides;
     }
 
-    all_H_dists = {};
+    all_H_dists = [];
 
     $.each(all_strides, function(len, strides) {
         if(strides.length < 2) {
             console.log(len + " <- this len is giving me trouble.");
-            all_H_dists[len] = 199900099.2;  // Just some super big number
-            // can't really work with this stride...
-            // shouldn't even be there.
             return;
         }
         var total = 0;
@@ -33,8 +30,10 @@ function update() {
             total += hammingDistNorm(strides[i], strides[i+1]);
         }
         // Average peephole-pairwise Hamming weight:
-        all_H_dists[len] = total / (strides.length - 1);
+        all_H_dists.push({len: len, dist: total / (strides.length - 1)});
     });
+
+    all_H_dists.sort(function(a, b) {return a.dist - b.dist; } );
 
     console.log(all_H_dists);
 }
