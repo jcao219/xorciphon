@@ -36,6 +36,7 @@ function retry() {
             var score = freq_score(xor_result);
             if(score > max_score) {
                 cur_char = alph;
+                max_score = score;
             }
         } 
         result += cur_char;
