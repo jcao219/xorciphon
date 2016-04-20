@@ -31,7 +31,7 @@ function hammingDistNorm(s1, s2) {
 }
 
 function printable(s) {
-    return /^[\x20-\x7E]+$/.test(s);
+    return /^[\x20-\x7E]+$/m.test(s);
 }
 
 function printable_char(c) {
