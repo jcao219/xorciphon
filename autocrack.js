@@ -27,7 +27,7 @@ function retry() {
     var result = "";
     for(var i = 0; i < transp.length; i++) {
         var possible_key_chars = [];
-        for(var alph in ALPHABET1) {
+        for(var alph in ALPHABET1.split('')) {
             var xor_result = xorEncrypt(transp[i], alph);
             if(printable(xor_result)) {
                 possible_key_chars.push(alph); 
