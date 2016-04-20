@@ -31,12 +31,13 @@ function hammingDistNorm(s1, s2) {
 }
 
 function printable(s) {
-    return /^[\x20-\x7E]+$/m.test(s);
+    return /^[\x20-\x7E\x09]+$/m.test(s);
 }
 
 function printable_char(c) {
     var ord = c.charCodeAt(0);
-    return ord >= 32 && ord <= 126;
+    return ord >= 32 && ord <= 126
+        || ord == 9;
 }
 
 function freq_score(s) {

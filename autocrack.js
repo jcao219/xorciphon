@@ -27,22 +27,18 @@ function retry() {
 
     var result = "";
     for(var i = 0; i < transp.length; i++) {
-        var possible_key_chars = [];
+        var max_score = 0;
+        var cur_char = "[!]";
         for(var j = 0; j < ALPHABET1.length; j++) {
             var alph = ALPHABET1[j];
             var xor_result = xorEncrypt(transp[i], alph);
-            if(printable(xor_result)) {
-                possible_key_chars.push(alph); 
+            
+            var score = freq_score(xor_result);
+            if(score > max_score) {
+                cur_char = alph;
             }
         } 
-        if(possible_key_chars.length == 0) {
-            result += "[!]";
-        } else if(possible_key_chars.length == 1) {
-            result += possible_key_chars[0]; 
-        } else {
-            result += "["+possible_key_chars.join()+"]";
-        }
-        console.log(possible_key_chars)
+        result += cur_char;
     }
 
     $("#guess").text(result);
