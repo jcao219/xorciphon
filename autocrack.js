@@ -40,7 +40,7 @@ function update() {
         all_strides[l] = strides;
     }
 
-    all_H_dists = [];
+    var all_H_dists = [];
 
     $.each(all_strides, function(len, strides) {
         if(strides.length < 2) {
@@ -54,7 +54,7 @@ function update() {
         // Average peephole-pairwise Hamming weight:
         var abs_dist = total / (strides.length - 1);
         var biased_dist = abs_dist + len / max_key_len;
-        all_H_dists.push({len: len, dist: max_key_len});
+        all_H_dists.push({len: len, dist: biased_dist});
     });
 
     all_H_dists.sort(function(a, b) {return a.dist - b.dist; } );
