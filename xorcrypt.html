@@ -6,14 +6,17 @@
         <title>Crib drag tool by Jimmy</title>
         <link rel="stylesheet" type="text/css" href="common.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="mycrypt.js"></script>
         <script type="text/javascript" src="xorcrypt.js"></script>
     </head>
     <body>
         <div class="top_container vertfill">
             <textarea id="textbox" class="quitebig vertfill" rows="50" >Plaintext.</textarea>
-            <button id="encrypt_btn">Encrypt</button>
-            <button id="decrypt_btn">Decrypt</button>
-            <input id="key" type="text" placeholder="key" />
+            <div id="userctl">
+                <button id="encrypt_btn">Encrypt</button>
+                <button id="decrypt_btn">Decrypt</button>
+                <input id="key" type="text" placeholder="key" />
+            </div>
         </div>
     </body>
 </html>
