@@ -1,6 +1,7 @@
 function tranpose(s, len) {
     var result = [];
     for(var pos = 0; pos < len; pos++) {
+        var curr_res = "";
         for(var i = pos; i < s.length; i += len) {
             curr_res += s[i];
         }
