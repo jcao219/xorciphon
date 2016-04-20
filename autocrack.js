@@ -42,6 +42,7 @@ function retry() {
         });
 
         $("#guesses").append("<div>" +  poss_list.join() + "</div>");
+    }
 
     $("#guess").text(result);
 }
