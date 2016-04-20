@@ -3,7 +3,7 @@ function xorEncrypt(text, key) {
     var result = "";
     for(var i = 0; i < text.length; i++) {
         key_pos = i % key_len;
-        result += String.fromCharCode(text.charCodeAt(1) ^ key.charCodeAt(key_pos));
+        result += String.fromCharCode(text.charCodeAt(i) ^ key.charCodeAt(key_pos));
     }
     return result;
 }
