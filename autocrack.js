@@ -10,6 +10,7 @@ function tranpose(s, len) {
 }
 
 function retry() {
+    var ALPHABET1 = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.-:@/1234567890";
     if(window.H_dists == undefined) {
         console.log(":(");
         return;
@@ -17,7 +18,30 @@ function retry() {
     if(window.H_dists.length == 0) {
         alert("Nothing more to work with.");
     }
-    var item = all
+    var item = window.H_dists.shift();
+    var ciphertext = atob($("#textbox").val());
+
+    var transp = tranpose(ciphertext, item.len);
+
+    var result = "";
+    for(var i = 0; i < transp.length; i++) {
+        var possible_key_chars = [];
+        for(var alph in ALPHABET1) {
+            var xor_result = xorEncrypt(transp[i], alph);
+            if(printable(xor_result)) {
+                possible_key_chars.push(alph); 
+            }
+        } 
+        if(possible_key_chars.length == 0) {
+            result += "[!]";
+        } else if(possible_key_chars.length == 1) {
+            result += possible_key_chars[0]; 
+        } else {
+            result += "["+possible_key_chars.join()+"]";
+        }
+    }
+
+    $("#guess").text(result);
 }
 
 function update() {
@@ -53,8 +77,8 @@ function update() {
         }
         // Average peephole-pairwise Hamming weight:
         var abs_dist = total / (strides.length - 1);
-        var biased_dist = abs_dist + len / max_key_len;
-        all_H_dists.push({len: len, dist: biased_dist});
+        var biased_dist = 0.78 * abs_dist + 0.22 * len / max_key_len;
+        all_H_dists.push({len: parseInt(len), dist: biased_dist});
     });
 
     all_H_dists.sort(function(a, b) {return a.dist - b.dist; } );
