@@ -40,6 +40,7 @@ function retry() {
         } else {
             result += "["+possible_key_chars.join()+"]";
         }
+        console.log(possible_key_chars)
     }
 
     $("#guess").text(result);
