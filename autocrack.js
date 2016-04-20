@@ -11,7 +11,7 @@ function tranpose(s, len) {
 }
 
 function retry() {
-    var ALPHABET1 = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.-:@/1234567890";
+    var ALPHABET1 = "abcdefghijklmnopqrstuvwxyz?,() ABCDEFGHIJKLMNOPQRSTUVWXYZ.-:@/1234567890";
     ALPHABET1 = ALPHABET1.split('');
     if(window.H_dists == undefined) {
         console.log(":(");
