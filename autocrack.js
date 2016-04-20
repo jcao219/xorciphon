@@ -21,9 +21,18 @@ function update() {
     all_H_dists = {};
 
     $.each(all_strides, function(len, strides) {
-        for(var i = 0; i < strides.length - 1; i++) {
-            all_H_dists[len] = hammingDistNorm(strides[i], strides[i+1]);
+        if(strides.length < 2) {
+            all_H_dists = 199900099.2;  // Just some super big number
+            // can't really work with this stride...
+            // shouldn't even be there.
+            return;
         }
+        var total = 0;
+        for(var i = 0; i < strides.length - 1; i++) {
+            total += hammingDistNorm(strides[i], strides[i+1]);
+        }
+        // Average peephole-pairwise Hamming weight:
+        all_H_dists[len] = total / (strides.length - 1);
     });
 
     console.log(all_H_dists);
