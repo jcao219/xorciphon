@@ -1,7 +1,7 @@
 function update() {
     var MAX_STRIDES = 7;
 
-    var text = $("#textbox").val();
+    var text = atob($("#textbox").val());
     var textlen = text.length;
     var max_key_len = textlen / 2;
     
