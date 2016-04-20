@@ -34,6 +34,7 @@ function retry() {
             var xor_result = xorEncrypt(transp[i], alph);
             
             var score = freq_score(xor_result);
+            console.log(alph + " -> " + score);
             if(score > max_score) {
                 cur_char = alph;
                 max_score = score;
