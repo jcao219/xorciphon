@@ -27,21 +27,21 @@ function retry() {
 
     var result = "";
     for(var i = 0; i < transp.length; i++) {
-        var max_score = 0;
-        var cur_char = "[!]";
+        var all_results = [];
         for(var j = 0; j < ALPHABET1.length; j++) {
             var alph = ALPHABET1[j];
             var xor_result = xorEncrypt(transp[i], alph);
             
             var score = freq_score(xor_result);
-            console.log(alph + " -> " + score);
-            if(score > max_score) {
-                cur_char = alph;
-                max_score = score;
-            }
+            all_results.push({chr: alph, score: score});
         } 
-        result += cur_char;
-    }
+        all_results.sort(function(a, b) { return b.score - a.score; });
+        result += all_results[0].chr;
+        var poss_list = $.map(all_results, function(r) {
+            return r.chr; 
+        });
+
+        $("#guesses").append("<div>" +  poss_list.join() + "</div>");
 
     $("#guess").text(result);
 }
@@ -98,6 +98,7 @@ $(function () {
         $("#guess").empty();
     }); 
     $("#decrypt_btn").click(function() { 
+        $("#guesses").empty();
         window.H_dists == undefined ? update() : retry();
         $("#decrypt_btn").text("Next");
     });
