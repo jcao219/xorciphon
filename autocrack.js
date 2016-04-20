@@ -1,3 +1,14 @@
+function tranpose(s, len) {
+    var result = [];
+    for(var pos = 0; pos < len; pos++) {
+        for(var i = pos; i < s.length; i += len) {
+            curr_res += s[i];
+        }
+        result.push(curr_res);
+    }
+    return result;
+}
+
 function update() {
     var MAX_STRIDES = 7;
 
@@ -35,9 +46,15 @@ function update() {
 
     all_H_dists.sort(function(a, b) {return a.dist - b.dist; } );
 
-    console.log(all_H_dists);
+    console.log(all_H_dists[0]);
+    window.H_dists = all_H_dists;
 }
 
 $(function () {
-    $("#decrypt_btn").click(update);
+    $('#textbox').bind('input propertychange', function() {
+        window.H_dists = undefined;
+    }); 
+    $("#decrypt_btn").click(function() { 
+        window.H_dists == undefined ? update() : retry();
+    });
 });
