@@ -9,7 +9,7 @@ function update() {
         for(var i = 0; i + l < textlen; i += l) {
             var the_substr = text.substring(i, i + l);
             strides.push(the_substr);
-            console.log(the_substr);
+            if(l == 6) console.log(the_substr);
         }
         all_strides[l] = strides;
     }
