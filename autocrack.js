@@ -94,10 +94,10 @@ $(function () {
     $('#textbox').bind('input propertychange', function() {
         window.H_dists = undefined;
         $("#decrypt_btn").text("Decrypt");
+        $("#guess").empty();
     }); 
     $("#decrypt_btn").click(function() { 
         window.H_dists == undefined ? update() : retry();
         $("#decrypt_btn").text("Next");
-        $("#guess").empty();
     });
 });
