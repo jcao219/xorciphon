@@ -1,9 +1,10 @@
 function update() {
-    var res = xorEncrypt($("#textbox").val(), $("#key").val());
     if(this.id == "encrypt_btn") {
+        var res = xorEncrypt($("#textbox").val(), $("#key").val());
         $("#textbox").val(btoa(res));
     } else {
-        $("#textbox").val(atob(res));
+        var res = xorEncrypt(atob($("#textbox").val()), $("#key").val());
+        $("#textbox").val(res);
     }
 }
 
