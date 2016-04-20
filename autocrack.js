@@ -12,6 +12,7 @@ function tranpose(s, len) {
 
 function retry() {
     var ALPHABET1 = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.-:@/1234567890";
+    ALPHABET1 = ALPHABET1.split('');
     if(window.H_dists == undefined) {
         console.log(":(");
         return;
@@ -27,7 +28,8 @@ function retry() {
     var result = "";
     for(var i = 0; i < transp.length; i++) {
         var possible_key_chars = [];
-        for(var alph in ALPHABET1.split('')) {
+        for(var j = 0; j < ALPHABET1.length; j++) {
+            var alph = ALPHABET1[j];
             var xor_result = xorEncrypt(transp[i], alph);
             if(printable(xor_result)) {
                 possible_key_chars.push(alph); 
