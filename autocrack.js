@@ -22,7 +22,8 @@ function update() {
 
     $.each(all_strides, function(len, strides) {
         if(strides.length < 2) {
-            all_H_dists = 199900099.2;  // Just some super big number
+            console.log(len + " <- this len is giving me trouble.");
+            all_H_dists[len] = 199900099.2;  // Just some super big number
             // can't really work with this stride...
             // shouldn't even be there.
             return;
