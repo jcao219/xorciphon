@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Crib drag tool by Jimmy</title>
+        <link rel="stylesheet" type="text/css" href="common.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="cribdrag.js"></script>
+    </head>
+    <body>
+        <div class="top_container vertfill">
+            <div id="leftward">
+                <h3 class="quitebig">Crib</h3>
+                <input type='text' id="crib" class="quitebig" />
+                <button id="do_it">Go</button>
+                <div id="frequent_sequences"></div>
+            </div>
+            <div id="rightward" class="vertfill">
+                <h3 class="quitebig">Ciphertext</h3>
+                <textarea id="ciphertext" class="quitebig vertfill" rows="50" >Base64 encoded text.</textarea>
+            </div>
+        </div>
+    </body>
+</html>
