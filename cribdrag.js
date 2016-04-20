@@ -17,7 +17,7 @@ function updateResults() {
             curr_thing += String.fromCharCode(single_xor_result);
         }
 
-        if(/^[\x20-\x7E]+$/.test(curr_thing)) {
+        if(printable(curr_thing)) {
             if(/^[A-Za-z ]+$/.test(curr_thing)) {
                 $("#frequent_sequences").append(
                     '<strong><p data-starti="'+ i +'" data-endi="' + (i + j) + '">' + curr_thing + "</p></strong>"); 

@@ -29,3 +29,7 @@ function hammingDistNorm(s1, s2) {
     var normWeight = totalWeight / len;
     return normWeight;
 }
+
+function printable(s) {
+    return /^[\x20-\x7E]+$/.test(s);
+}
