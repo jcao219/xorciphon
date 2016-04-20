@@ -98,5 +98,6 @@ $(function () {
     $("#decrypt_btn").click(function() { 
         window.H_dists == undefined ? update() : retry();
         $("#decrypt_btn").text("Next");
+        $("#guess").empty();
     });
 });
