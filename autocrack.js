@@ -28,17 +28,21 @@ function retry() {
     var result = "";
     for(var i = 0; i < transp.length; i++) {
         var all_results = [];
+        var max_score = 0;
         for(var j = 0; j < ALPHABET1.length; j++) {
             var alph = ALPHABET1[j];
             var xor_result = xorEncrypt(transp[i], alph);
             
             var score = freq_score(xor_result);
+            if(score > max_score) {
+                max_score = score; 
+            }
             all_results.push({chr: alph, score: score});
         } 
         all_results.sort(function(a, b) { return b.score - a.score; });
         result += all_results[0].chr;
         var poss_list = $.map(all_results, function(r) {
-            return r.chr; 
+            return r.score > max_score/2 ? '<strong>' + r.chr + '</strong>' : r.chr; 
         });
 
         $("#guesses").append("<div>" +  poss_list.join() + "</div><br>");
