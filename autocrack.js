@@ -42,7 +42,7 @@ function retry() {
         all_results.sort(function(a, b) { return b.score - a.score; });
         result += all_results[0].chr;
         var poss_list = $.map(all_results, function(r) {
-            return r.score > max_score/2 ? '<strong>' + r.chr + '</strong>' : r.chr; 
+            return r.score > 0.88*max_score ? '<strong>' + r.chr + '</strong>' : r.chr; 
         });
 
         $("#guesses").append("<div>" +  poss_list.join() + "</div><br>");
