@@ -95,7 +95,7 @@ function update() {
 $(function () {
     $('#textbox').bind('input propertychange', function() {
         window.H_dists = undefined;
-        $("#decrypt_btn").text("Decrypt");
+        $("#decrypt_btn").text("Guess Key");
         $("#guess").empty();
     }); 
     $("#decrypt_btn").click(function() { 
